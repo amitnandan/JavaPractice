@@ -1,10 +1,10 @@
 package org.amit.service;
 
-import org.amit.model.AmitTable;
-import org.amit.repository.AmitRepository1;
-import org.amit.repository.AmitRepository2;
+import org.amit.model.db1.AmitTable;
+import org.amit.model.db2.AmitTable2;
+import org.amit.repository.db1.AmitRepository1;
+import org.amit.repository.db2.AmitRepository2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,10 +28,10 @@ public class AmitService {
 
     @Transactional(transactionManager = "db2TransactionManager")
     public void performDb2Transaction() {
-        AmitTable amitTable = new AmitTable();
-        amitTable.setName("Amit");
-        amitTable.setAge("23");
-        amitRepository2.save(amitTable);
+        AmitTable amitTable2 = new AmitTable();
+        amitTable2.setName("Amit");
+        amitTable2.setAge("23");
+        amitRepository2.save(amitTable2);
     }
 
 }

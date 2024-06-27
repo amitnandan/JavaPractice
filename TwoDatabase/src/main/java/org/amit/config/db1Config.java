@@ -23,7 +23,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"org.amit"},
+@EnableJpaRepositories(basePackages = {"org.amit.repository.db1"},
         entityManagerFactoryRef = "db1EntityManagerFactory",
         transactionManagerRef = "db1TransactionManager")
 public class db1Config {
@@ -42,7 +42,7 @@ public class db1Config {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("db1DataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("org.amit");
+        em.setPackagesToScan("org.amit.model.db1");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setPersistenceUnitName("db1PersistenceUnit");
         em.setJpaProperties(hibernateProperties());

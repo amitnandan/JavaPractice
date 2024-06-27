@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @EnableTransactionManagement
 @Configuration
-@EnableJpaRepositories(basePackages = {"org.amit.model"},
+@EnableJpaRepositories(basePackages = {"org.amit.repository.db2"},
         entityManagerFactoryRef = "db2EntityManagerFactory",
         transactionManagerRef = "db2TransactionManager")
 public class db2Config {
@@ -25,16 +25,16 @@ public class db2Config {
 
     @Bean(name = "db2DataSource")
     public DataSource dataSource() {
-        return DataSourceBuilder.create().url("jdbc:mysql://localhost:3306/db1").username("root").password("Amit3819$").driverClassName("com.mysql.cj.jdbc.Driver").build();
+        return DataSourceBuilder.create().url("jdbc:mysql://localhost:3306/db2").username("root").password("Amit3819$").driverClassName("com.mysql.cj.jdbc.Driver").build();
     }
 
     @Bean(name = "db2EntityManagerFactory")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("db1DataSource") DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("db2DataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("org.amit.model");
+        em.setPackagesToScan("org.amit.model.db1");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        em.setPersistenceUnitName("db1PersistenceUnit");
+        em.setPersistenceUnitName("db2PersistenceUnit");
         em.setJpaProperties(hibernateProperties());
         return em;
     }
