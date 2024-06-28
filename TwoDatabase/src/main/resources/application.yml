@@ -1,9 +1,28 @@
-#resilience4j:
-#        circuitbreaker:
-#                instances:
-#                        db1CircuitBreaker:
-#                                recordFailurePredicate: com.amt.yourpackage.DatabaseFailurePredicate(db1)
-#                                slidingWindowSize: 100
-#                        db2CircuitBreaker:
-#                                recordFailurePredicate: com.example.yourpackage.DatabaseFailurePredicate(db2)
-#                                slidingWindowSize: 50
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+    shared:
+      slidingWindowSize: 100
+      permittedNumberOfCallsInHalfOpenState: 30
+      waitDurationInOpenState: 1s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+  instances:
+    backendA:
+      baseConfig: default
+    backendB:
+      registerHealthIndicator: true
+      slidingWindowSize: 3
+      minimumNumberOfCalls: 3
+      permittedNumberOfCallsInHalfOpenState: 1
+      waitDurationInOpenState: 15s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 3

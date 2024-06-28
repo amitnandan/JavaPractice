@@ -22,15 +22,24 @@ public class AmitService {
     private  AmitRepository2 amitRepository2;
 
 
-
-    @CircuitBreaker(name = "backendServiceCircuitBreakerConfig", fallbackMethod = "fallback2")
+    //Resilience4j's Circuit Breaker triggers the fallback method not only for exceptions occurring within the annotated method's scope but also for errors that occur in the call stack outside of it, ensuring backward compatibility.
+    @CircuitBreaker(name = "backendB", fallbackMethod = "fallback2")
     @Transactional(transactionManager = "db1TransactionManager")
     public void performDb1Transaction() {
+        log.info("INSIDE perfromDB1Transcation");
         AmitTable amitTable = new AmitTable();
         amitTable.setName("Amit");
         amitTable.setAge("21");
-        amitRepository1.save(amitTable);
+        try {
+            amitRepository1.save(amitTable);
+        }catch (Exception e){
+            log.info("INSIDE EXCEPTION");
+            log.info(e.getMessage());
+            log.error(String.valueOf(e.getClass()),e);
+        }
     }
+
+
 
     @Transactional(transactionManager = "db2TransactionManager")
     public void performDb2Transaction() {
