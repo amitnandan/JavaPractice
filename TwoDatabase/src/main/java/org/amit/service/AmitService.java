@@ -1,5 +1,7 @@
 package org.amit.service;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import lombok.extern.slf4j.Slf4j;
 import org.amit.model.db1.AmitTable;
 import org.amit.model.db2.AmitTable2;
 import org.amit.repository.db1.AmitRepository1;
@@ -8,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+@Slf4j
 @Service
 public class AmitService {
 
@@ -18,6 +22,8 @@ public class AmitService {
     private  AmitRepository2 amitRepository2;
 
 
+
+    @CircuitBreaker(name = "backendServiceCircuitBreakerConfig", fallbackMethod = "fallback2")
     @Transactional(transactionManager = "db1TransactionManager")
     public void performDb1Transaction() {
         AmitTable amitTable = new AmitTable();
@@ -32,6 +38,10 @@ public class AmitService {
         amitTable2.setName("Amit");
         amitTable2.setAge("23");
         amitRepository2.save(amitTable2);
+    }
+    public void fallback2(Throwable throwable) {
+        log.info("INSIDE FALLBACK");
+        log.error("Fallback response: " + throwable);
     }
 
 }

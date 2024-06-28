@@ -1,0 +1,9 @@
+#resilience4j:
+#        circuitbreaker:
+#                instances:
+#                        db1CircuitBreaker:
+#                                recordFailurePredicate: com.amt.yourpackage.DatabaseFailurePredicate(db1)
+#                                slidingWindowSize: 100
+#                        db2CircuitBreaker:
+#                                recordFailurePredicate: com.example.yourpackage.DatabaseFailurePredicate(db2)
+#                                slidingWindowSize: 50
