@@ -4,5 +4,5 @@ import org.amit.model.db1.AmitTable;
 import org.amit.model.db2.AmitTable2;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AmitRepository2 extends JpaRepository<AmitTable,Long> {
+public interface AmitRepository2 extends JpaRepository<AmitTable2,Long> {
 }

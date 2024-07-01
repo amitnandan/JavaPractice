@@ -18,8 +18,8 @@ public class AmitService {
     @Autowired
     private  AmitRepository1 amitRepository1;
 
-    @Autowired
-    private  AmitRepository2 amitRepository2;
+//    @Autowired
+//    private  AmitRepository2 amitRepository2;
 
 
     //Resilience4j's Circuit Breaker triggers the fallback method not only for exceptions occurring within the annotated method's scope but also for errors that occur in the call stack outside of it, ensuring backward compatibility.
@@ -41,13 +41,13 @@ public class AmitService {
 
 
 
-    @Transactional(transactionManager = "db2TransactionManager")
-    public void performDb2Transaction() {
-        AmitTable amitTable2 = new AmitTable();
-        amitTable2.setName("Amit");
-        amitTable2.setAge("23");
-        amitRepository2.save(amitTable2);
-    }
+//    @Transactional(transactionManager = "db2TransactionManager")
+//    public void performDb2Transaction() {
+//        AmitTable amitTable2 = new AmitTable();
+//        amitTable2.setName("Amit");
+//        amitTable2.setAge("23");
+//        amitRepository2.save(amitTable2);
+//    }
     public void fallback2(Throwable throwable) {
         log.info("INSIDE FALLBACK");
         log.error("Fallback response: " + throwable);

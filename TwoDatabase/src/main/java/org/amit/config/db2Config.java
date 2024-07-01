@@ -32,7 +32,7 @@ public class db2Config {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("db2DataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("org.amit.model.db1");
+        em.setPackagesToScan("org.amit.model.db2");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setPersistenceUnitName("db2PersistenceUnit");
         em.setJpaProperties(hibernateProperties());
