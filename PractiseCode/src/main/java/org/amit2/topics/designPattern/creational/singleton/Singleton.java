@@ -1,10 +1,9 @@
-package org.amit2.topics.designPattern.creational;
+package org.amit2.topics.designPattern.creational.singleton;
 
 // LAZY LOADING SINGLETON DESIGN , WE ARE HANDLING   MULTITHREADING ASPECT HERE AS WELL
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Setter
 @Getter

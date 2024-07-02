@@ -1,4 +1,4 @@
-package org.amit2.topics.AsyncMethod;
+package org.amit2.topics.asyncMethod;
 
 import java.util.concurrent.CompletableFuture;
 

@@ -1,4 +1,4 @@
-package org.amit2.topics.designPattern.creational;
+package org.amit2.topics.designPattern.creational.singleton;
 
 public class Test {
     public static void main(String[] args){
@@ -16,6 +16,9 @@ public class Test {
         // Hash codes should be the same due to default behavior
         System.out.println("singleton1.hashCode(): " + singleton1.hashCode());
         System.out.println("singleton2.hashCode(): " + singleton2.hashCode());
+
+        System.out.println("/* *****************************************  FACTORY DESIGN     *******************************************************/\n" );
+
 
     }
 }

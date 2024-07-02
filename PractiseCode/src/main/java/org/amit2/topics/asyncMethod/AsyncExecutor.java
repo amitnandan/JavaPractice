@@ -1,4 +1,4 @@
-package org.amit2.topics.AsyncMethod;
+package org.amit2.topics.asyncMethod;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
