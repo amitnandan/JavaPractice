@@ -1,4 +1,4 @@
-package org.amit2.topics.designPattern.creational.AbstractFactory;
+package org.amit2.topics.designPattern.creational.abstractFactory;
 
 
 interface PaymentFactory{
