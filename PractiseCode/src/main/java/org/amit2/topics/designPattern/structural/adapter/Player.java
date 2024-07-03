@@ -1,4 +1,5 @@
 package org.amit2.topics.designPattern.structural.adapter;
 
-public class Adapter {
+public interface Player {
+     int run();
 }
